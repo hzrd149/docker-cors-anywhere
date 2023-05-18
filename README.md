@@ -5,7 +5,7 @@ The docker image for [cors-anywhere](https://github.com/Rob--W/cors-anywhere).
 ### Run
 
 ```
-docker run --rm ghcr.io/hzrd149/docker-cors-anywhere/docker-cors-anywhere
+docker run --rm ghcr.io/hzrd149/docker-cors-anywhere
 ```
 
 ### Envirionment Variables
