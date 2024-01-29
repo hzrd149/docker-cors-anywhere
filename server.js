@@ -37,6 +37,9 @@ function readTLSContent(tls) {
 }
 
 var removeExtraHeaders = parseEnvList(process.env.CORSANYWHERE_REMOVE_HEADERS);
+var requireHeaders = process.env.CORSANYWHERE_REQUIRE_HEADERS !== undefined
+  ? parseEnvList(process.env.CORSANYWHERE_REQUIRE_HEADERS)
+  : undefined;
 var removeHeaders = [
   'cookie',
   'cookie2',
@@ -51,7 +54,7 @@ var cors_proxy = require('cors-anywhere');
 var server = cors_proxy.createServer({
   originBlacklist: originBlacklist,
   originWhitelist: originWhitelist,
-  requireHeader: ['origin', 'x-requested-with'],
+  requireHeader: requireHeaders || ['origin', 'x-requested-with'],
   checkRateLimit: checkRateLimit,
   removeHeaders: removeHeaders,
   redirectSameOrigin: true,
